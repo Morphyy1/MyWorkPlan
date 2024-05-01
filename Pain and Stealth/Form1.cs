@@ -18,6 +18,7 @@ namespace Pain_and_Stealth
         private int damage;
         private int steps;
 
+        private Trader trader;
         private Bullets _bullet;
         private PictureBox[] _bullets;
         private HealthyBar _healthyBar;
@@ -39,6 +40,7 @@ namespace Pain_and_Stealth
             _animationMap = new AnimationMap();
             _healthyBar = new HealthyBar();
             _bullet = new Bullets();
+            trader = new Trader();
             BulletSpeed = 10;
             EnemySpeed = 2;
 
@@ -66,12 +68,21 @@ namespace Pain_and_Stealth
                 Enabled= true,
                 Interval = 1
             };
+            var traderAnimation = new Timer
+            {
+                Enabled = true,
+                Interval = 1
+            };
             var enemyAttack = new Timer
             {
                 Enabled = false,
                 Interval = 1
             };
 
+            traderAnimation.Tick += (sender, args) =>
+            {
+                TraderAnimation();
+            };
             enemyAttack.Tick += (sender, args) =>
             {
                 AnimationAttack();
@@ -124,6 +135,7 @@ namespace Pain_and_Stealth
                 var g = args.Graphics;
 
                 _animationMap.DrawImage(g);
+                trader.DrawImage(g);
                 _animationPlayer.DrawImage(g);
                 _healthyBar.DrawImage(g);
                 if (_enemySpawn.Count != 0)
@@ -139,7 +151,7 @@ namespace Pain_and_Stealth
                     else
                         _animationPlayer.Conflict = false;
                 }
-                _animationPlayer.Animation(_animationMap, _enemySpawn, _bullet);
+                _animationPlayer.Animation(_animationMap, _enemySpawn, _bullet, trader);
                 Invalidate();
             };
 
@@ -154,6 +166,7 @@ namespace Pain_and_Stealth
         private void AnimationRun() => _enemySpawn[0].AnimationRun();
         private void AnimationDead() => _enemySpawn[0].AnimationDead();
         private void AnimationAttack() => _enemySpawn[0].AnimationAttack();
+        private void TraderAnimation() => trader.Animate();
 
         public void SetUpForBullets()
         {
@@ -220,6 +233,7 @@ namespace Pain_and_Stealth
                 SetEnemyImage();
             _animationPlayer.SetPlayerImage();
             _animationMap.SetImagesMaps();
+            trader.SetTraderImage();
             _healthyBar.SetIamage();
         }
 

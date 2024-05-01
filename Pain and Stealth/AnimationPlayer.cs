@@ -62,7 +62,8 @@ namespace Pain_and_Stealth
             player = Image.FromFile(playerStartRight[0]);
         }
 
-        public void Animation(AnimationMap map, List<AnimationEnimies> enimies, Bullets bullet)
+        public void Animation(AnimationMap map, List<AnimationEnimies> enimies,
+            Bullets bullet, Trader trader)
         {
             if (bullet.IsFire)
             {
@@ -104,6 +105,9 @@ namespace Pain_and_Stealth
                 map.SecondMap4.X -= Speed;
                 map.SecondMap5.X -= Speed;
                 map.SecondMap6.X -= Speed;
+
+                trader.X -= Speed;
+
                 for (var i = 0; i < enimies.Count; i++)
                     enimies[i].X -= Speed;
                 X = 400;
@@ -122,6 +126,9 @@ namespace Pain_and_Stealth
                 map.SecondMap4.X += Speed;
                 map.SecondMap5.X += Speed;
                 map.SecondMap6.X += Speed;
+                
+                trader.X += Speed;
+
                 for (var i = 0; i < enimies.Count; i++)
                     enimies[i].X += Speed;
                 X = 200;

@@ -3,32 +3,36 @@
   "WorkspaceRootPath": "C:\\C#Game\\Pain and Stealth\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|c:\\c#game\\pain and stealth\\pain and stealth\\animationplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\animationplayer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|c:\\c#game\\pain and stealth\\pain and stealth\\trader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\trader.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\animationmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\animationmap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\animationenimies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\animationenimies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\menu.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\animationenimies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\animationenimies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,44 +54,59 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AnimationMap.cs",
-              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\AnimationMap.cs",
-              "RelativeDocumentMoniker": "Pain and Stealth\\AnimationMap.cs",
-              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\AnimationMap.cs",
-              "RelativeToolTip": "Pain and Stealth\\AnimationMap.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAACUAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T04:43:42.059Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "AnimationPlayer.cs",
               "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\AnimationPlayer.cs",
               "RelativeDocumentMoniker": "Pain and Stealth\\AnimationPlayer.cs",
               "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\AnimationPlayer.cs",
               "RelativeToolTip": "Pain and Stealth\\AnimationPlayer.cs",
-              "ViewState": "AQIAACMAAAAAAAAAAAAxwIIAAAAeAAAA",
+              "ViewState": "AQIAAFIAAAAAAAAAAAAYwIEAAAAiAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T04:31:39.84Z",
+              "WhenOpened": "2024-05-01T05:43:22.43Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Trader.cs",
+              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Trader.cs",
+              "RelativeDocumentMoniker": "Pain and Stealth\\Trader.cs",
+              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Trader.cs",
+              "RelativeToolTip": "Pain and Stealth\\Trader.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABcAAAATAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-01T05:26:32.057Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AnimationMap.cs",
+              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\AnimationMap.cs",
+              "RelativeDocumentMoniker": "Pain and Stealth\\AnimationMap.cs",
+              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\AnimationMap.cs",
+              "RelativeToolTip": "Pain and Stealth\\AnimationMap.cs",
+              "ViewState": "AQIAAAsAAAAAAAAAAAAQwCUAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-30T04:43:42.059Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "Form1.cs",
               "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Form1.cs",
               "RelativeDocumentMoniker": "Pain and Stealth\\Form1.cs",
               "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Form1.cs",
               "RelativeToolTip": "Pain and Stealth\\Form1.cs",
-              "ViewState": "AQIAANQAAAAAAAAAAAAAwOkAAAAAAAAA",
+              "ViewState": "AQIAAAwAAAAAAAAAAAAAAJkAAABWAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T04:31:35.286Z"
+              "WhenOpened": "2024-04-30T04:31:35.286Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "Menu.cs",
               "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Menu.cs",
               "RelativeDocumentMoniker": "Pain and Stealth\\Menu.cs",
@@ -95,41 +114,45 @@
               "RelativeToolTip": "Pain and Stealth\\Menu.cs",
               "ViewState": "AQIAABEAAAAAAAAAAAAgwE0AAAAXAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T08:09:16.691Z"
+              "WhenOpened": "2024-04-24T08:09:16.691Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "Menu.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Menu.cs",
               "RelativeDocumentMoniker": "Pain and Stealth\\Menu.cs",
               "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Menu.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "Pain and Stealth\\Menu.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-24T08:09:08.205Z"
+              "WhenOpened": "2024-04-24T08:09:08.205Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "AnimationEnimies.cs",
               "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\AnimationEnimies.cs",
               "RelativeDocumentMoniker": "Pain and Stealth\\AnimationEnimies.cs",
               "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\AnimationEnimies.cs",
               "RelativeToolTip": "Pain and Stealth\\AnimationEnimies.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAA9wD4AAAAJAAAA",
+              "ViewState": "AQIAACwAAAAAAAAAAAAIwD4AAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-23T16:14:24.717Z"
+              "WhenOpened": "2024-04-23T16:14:24.717Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 7,
               "Title": "Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Form1.cs",
               "RelativeDocumentMoniker": "Pain and Stealth\\Form1.cs",
               "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "RelativeToolTip": "Pain and Stealth\\Form1.cs [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-14T06:31:19.269Z"
+              "WhenOpened": "2024-04-14T06:31:19.269Z",
+              "EditorCaption": " [\u041A\u043E\u043D\u0441\u0442\u0440\u0443\u043A\u0442\u043E\u0440]"
             }
           ]
         }
