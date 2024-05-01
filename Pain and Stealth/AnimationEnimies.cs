@@ -11,11 +11,16 @@ namespace Pain_and_Stealth
 {
     public class AnimationEnimies
     {
-        Image enimies;
+        public Image enimies;
         List<string> EnemiesDead;
+        List<string> EnemiesRun;
+        List<string> EnemiesAttack;
         private int slowDowmFrameRate;
+        public int slowSteps;
         private int steps;
-        private Random random;
+        public bool anim = true;
+        public int Healthy;
+
         public int X { get; set; }
         public int Y { get; set; }
         public int Height { get; set; }
@@ -23,34 +28,58 @@ namespace Pain_and_Stealth
 
         public AnimationEnimies()
         {
+            Healthy = 3;
             Y = 395;
             Height = 148;
             Width = 155;
+            slowSteps = 4;
             EnemiesDead = new List<string>();
+            EnemiesRun = new List<string>();
         }
 
         public void SetEnimiesImage()
         {
             EnemiesDead = Directory.GetFiles("EnemiesDead", "*png").ToList();
+            EnemiesAttack = Directory.GetFiles("EnemiesAttack", "*png").ToList();
+            EnemiesRun = Directory.GetFiles("EnemiesRun", "*png").ToList();
             enimies = Image.FromFile(EnemiesDead[0]);
         }
 
-        public void Animation()
+        public void StateAnimation()
         {
-            AnimateEnimies(EnemiesDead, 0, 3);
+            AnimateEnimies(EnemiesDead, 0,0);
+        }
+
+        public void AnimationDead()
+        {
+            AnimateEnimies(EnemiesDead, 0, 4);
+        }
+
+        public void AnimationRun()
+        {
+            AnimateEnimies(EnemiesRun, 0, 5);
+        }
+        public void AnimationAttack()
+        {
+            AnimateEnimies(EnemiesAttack, 0, 8);
         }
 
         public void AnimateEnimies(List<string> Move, int start, int end)
         {
             slowDowmFrameRate += 1;
-            if (slowDowmFrameRate == 5)
+            if (slowDowmFrameRate == slowSteps)
             {
                 steps++;
                 slowDowmFrameRate = 0;
             }
-            if (steps > end || steps < start)
+            if (steps > end)
+            {
                 steps = start;
-            enimies = Image.FromFile(Move[steps]);
+                enimies = Image.FromFile(Move[start]);
+                anim = false;
+            }    
+            else 
+                enimies = Image.FromFile(Move[steps]);
         }
 
         public void DrawImage(Graphics g) => g.DrawImage(enimies,

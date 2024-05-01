@@ -23,86 +23,119 @@ namespace Pain_and_Stealth
 
         private Image player;
         public List<string> playerMovementRight;
-        private List<string> playerMovementLeft;
-        private Player Player;
+        public List<string> playerMovementLeft;
+        public List<string> playerStartRight;
+        public List<string> playerStartLeft;
+        public bool Conflict = false;
+        public bool StartPosition = true;
+
         private SizeMap ClientSize;
+        public int X { get; set; }
+        public int Y { get; set; }
+        public int Height { get; set; }
+        public int Width { get; set; }
+        public int Speed { get; set; }
+        public int Healthy { get; set; }
 
         public AnimationPlayer()
         {
+            X = 350;
+            Y = 440;
+            Height = 100;
+            Width = 105;
+            Speed = 3;
+            Healthy = 4;
+            playerStartRight = new List<string>();
+            playerStartLeft = new List<string>();
             playerMovementRight = new List<string>();
             playerMovementLeft = new List<string>();
             IsStartMap = true;
-            Player = new Player();
             ClientSize = new SizeMap();
         }
 
         public void SetPlayerImage()
         {
+            playerStartRight = Directory.GetFiles("HeroRightStart", "*png").ToList();
+            playerStartLeft = Directory.GetFiles("HeroLeftStart", "*png").ToList();
             playerMovementRight = Directory.GetFiles("HeroMoveRight", "*png").ToList();
             playerMovementLeft = Directory.GetFiles("HeroMoveLeft", "*png").ToList();
-            player = Image.FromFile(playerMovementRight[0]);
+            player = Image.FromFile(playerStartRight[0]);
         }
 
-        public void Animation(AnimationMap map, List<AnimationEnimies> enimies)
+        public void Animation(AnimationMap map, List<AnimationEnimies> enimies, Bullets bullet)
         {
-            if (goLeft && Player.X > 0)
+            if (bullet.IsFire)
             {
-                Player.X -= Player.Speed;
-                AnimatePlayer(playerMovementLeft, 0, 4);
+                bullet.X += 10;
+            }
+            if (goLeft && X > 0)
+            {
+                X -= Speed;
+                AnimatePlayer(playerStartLeft, 0, 4);
             }
 
-            if (goRight && Player.X + Player.Width < ClientSize.Width)
+            if (goRight && X + Width < ClientSize.Width && !Conflict)
             {
-                Player.X += Player.Speed;
-                AnimatePlayer(playerMovementRight, 1, 5);
+                X += Speed;
+                AnimatePlayer(playerStartRight, 1, 5);
             }
 
             if (IsJump)
             {
-                Player.Y -= force;
+                Y -= force;
                 force -= 1;
             }
 
-            if (Player.Y + Player.Height >= 550)
+            if (Y + Height >= 550)
             {
-                Player.Y = 540 - Player.Height;
+                Y = 540 - Height;
                 IsJump = false;
             }
 
-            if (Player.X >= 400 && goRight && !IsEndMap)
+            if (X >= 400 && goRight && !IsEndMap && !Conflict)
             {
-                map.StartMap1.X -= Player.Speed;
-                map.StartMap2.X -= Player.Speed;
-                map.TransitionMap.X -= Player.Speed;
-                map.SecondMap1.X -= Player.Speed;
-                map.SecondMap2.X -= Player.Speed;
+                map.StartMap1.X -= Speed;
+                map.StartMap2.X -= Speed;
+                map.StartMap3.X -= Speed;
+                map.TransitionMap.X -= Speed;
+                map.SecondMap1.X -= Speed;
+                map.SecondMap2.X -= Speed;
+                map.SecondMap3.X -= Speed;
+                map.SecondMap4.X -= Speed;
+                map.SecondMap5.X -= Speed;
+                map.SecondMap6.X -= Speed;
                 for (var i = 0; i < enimies.Count; i++)
-                    enimies[i].X -= Player.Speed;
-                Player.X = 400;
+                    enimies[i].X -= Speed;
+                X = 400;
                 IsStartMap = false;
 
             }
-            if (Player.X <= 200 && goLeft && !IsStartMap)
+            if (X <= 200 && goLeft && !IsStartMap)
             {
-                map.StartMap1.X += Player.Speed;
-                map.StartMap2.X += Player.Speed;
-                map.TransitionMap.X += Player.Speed;
-                map.SecondMap1.X += Player.Speed;
-                map.SecondMap2.X += Player.Speed;
+                map.StartMap1.X += Speed;
+                map.StartMap2.X += Speed;
+                map.StartMap3.X += Speed;
+                map.TransitionMap.X += Speed;
+                map.SecondMap1.X += Speed;
+                map.SecondMap2.X += Speed;
+                map.SecondMap3.X += Speed;
+                map.SecondMap4.X += Speed;
+                map.SecondMap5.X += Speed;
+                map.SecondMap6.X += Speed;
                 for (var i = 0; i < enimies.Count; i++)
-                    enimies[i].X += Player.Speed;
-                Player.X = 200;
+                    enimies[i].X += Speed;
+                X = 200;
             }
             if (map.StartMap1.X >= 0)
                 IsStartMap = true;
-            if (map.SecondMap2.X <= 500)
+            if (map.SecondMap6.X <= 500)
                 IsEndMap = true;
         }
 
         public void AnimatePlayer(List<string> Move, int start, int end)
         {
             slowDowmFrameRate += 1;
-            if (slowDowmFrameRate == 8)
+            if (slowDowmFrameRate == 5)
             {
                 steps++;
                 slowDowmFrameRate = 0;
@@ -113,6 +146,6 @@ namespace Pain_and_Stealth
         }
 
         public void DrawImage(Graphics g) => g.DrawImage(player,
-            Player.X, Player.Y, Player.Width, Player.Height);
+            X, Y, Width, Height);
     }
 }

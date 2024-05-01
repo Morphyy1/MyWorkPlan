@@ -7,4 +7,10 @@ C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain and Stealth.csproj.Ge
 C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain and Stealth.csproj.CoreCompileInputs.cache
 C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain and Stealth.exe
 C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain and Stealth.pdb
+C:\C#Game\Pain and Stealth\Pain and Stealth\bin\Debug\Pain and Stealth.exe.manifest
+C:\C#Game\Pain and Stealth\Pain and Stealth\bin\Debug\Pain and Stealth.application
+C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain and Stealth.exe.manifest
+C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain and Stealth.application
+C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain_and_Stealth.Menu.resources
 C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain_and_Stealth.Form1.resources
+C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain_and_Stealth.TrainingForm.resources
