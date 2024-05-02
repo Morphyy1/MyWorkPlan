@@ -19,6 +19,7 @@ namespace Pain_and_Stealth
         public bool IsStartMap;
         private int steps;
         public int force;
+        public bool IsTrader;
         private int slowDowmFrameRate;
 
         private Image player;
@@ -63,7 +64,7 @@ namespace Pain_and_Stealth
         }
 
         public void Animation(AnimationMap map, List<AnimationEnimies> enimies,
-            Bullets bullet, Trader trader)
+            Bullets bullet, List<Trader> traders, TraderButton traderButton)
         {
             if (bullet.IsFire)
             {
@@ -106,7 +107,10 @@ namespace Pain_and_Stealth
                 map.SecondMap5.X -= Speed;
                 map.SecondMap6.X -= Speed;
 
-                trader.X -= Speed;
+                traderButton.X -= Speed;
+
+                foreach (var trader in traders)
+                    trader.X -= Speed;
 
                 for (var i = 0; i < enimies.Count; i++)
                     enimies[i].X -= Speed;
@@ -126,17 +130,36 @@ namespace Pain_and_Stealth
                 map.SecondMap4.X += Speed;
                 map.SecondMap5.X += Speed;
                 map.SecondMap6.X += Speed;
-                
-                trader.X += Speed;
+
+                traderButton.X += Speed;
+
+                foreach (var trader in traders)
+                    trader.X += Speed;
 
                 for (var i = 0; i < enimies.Count; i++)
                     enimies[i].X += Speed;
                 X = 200;
             }
+
             if (map.StartMap1.X >= 0)
                 IsStartMap = true;
             if (map.SecondMap6.X <= 500)
                 IsEndMap = true;
+
+            foreach (var trader in traders)
+            {
+                if (X + 200 >= trader.X)
+                {
+                    var coord = trader.X + 45;
+                    traderButton.Y = 375;
+                    traderButton.X = coord;
+                }
+                if (trader.X + 150 < X)
+                {
+                    traderButton.Y = 1000;
+                    continue;
+                }
+            }
         }
 
         public void AnimatePlayer(List<string> Move, int start, int end)

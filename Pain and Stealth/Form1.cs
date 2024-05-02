@@ -18,7 +18,8 @@ namespace Pain_and_Stealth
         private int damage;
         private int steps;
 
-        private Trader trader;
+        private List<Trader> traders;
+        private TraderButton traderButton;
         private Bullets _bullet;
         private PictureBox[] _bullets;
         private HealthyBar _healthyBar;
@@ -39,8 +40,8 @@ namespace Pain_and_Stealth
             _animationPlayer = new AnimationPlayer();
             _animationMap = new AnimationMap();
             _healthyBar = new HealthyBar();
+            traderButton = new TraderButton();
             _bullet = new Bullets();
-            trader = new Trader();
             BulletSpeed = 10;
             EnemySpeed = 2;
 
@@ -78,6 +79,7 @@ namespace Pain_and_Stealth
                 Enabled = false,
                 Interval = 1
             };
+
 
             traderAnimation.Tick += (sender, args) =>
             {
@@ -135,7 +137,11 @@ namespace Pain_and_Stealth
                 var g = args.Graphics;
 
                 _animationMap.DrawImage(g);
-                trader.DrawImage(g);
+                DrawTraderImage(g);
+
+                traderButton.DrawButtonImage(g);
+
+
                 _animationPlayer.DrawImage(g);
                 _healthyBar.DrawImage(g);
                 if (_enemySpawn.Count != 0)
@@ -151,7 +157,8 @@ namespace Pain_and_Stealth
                     else
                         _animationPlayer.Conflict = false;
                 }
-                _animationPlayer.Animation(_animationMap, _enemySpawn, _bullet, trader);
+                _animationPlayer.Animation(_animationMap, _enemySpawn,
+                    _bullet, traders, traderButton);
                 Invalidate();
             };
 
@@ -166,7 +173,11 @@ namespace Pain_and_Stealth
         private void AnimationRun() => _enemySpawn[0].AnimationRun();
         private void AnimationDead() => _enemySpawn[0].AnimationDead();
         private void AnimationAttack() => _enemySpawn[0].AnimationAttack();
-        private void TraderAnimation() => trader.Animate();
+        private void TraderAnimation()
+        {
+            foreach (var tard in traders)
+                tard.Animate();
+        }
 
         public void SetUpForBullets()
         {
@@ -228,12 +239,14 @@ namespace Pain_and_Stealth
             SetBackgroundImage();
             SetUpForBullets();
             SetPositionEnemy();
+            SetPositionTrade();
 
             if (_enemySpawn.Count != 0)
                 SetEnemyImage();
             _animationPlayer.SetPlayerImage();
             _animationMap.SetImagesMaps();
-            trader.SetTraderImage();
+            SetTraderImage();
+            traderButton.SetButtonImage();
             _healthyBar.SetIamage();
         }
 
@@ -253,6 +266,17 @@ namespace Pain_and_Stealth
                 /*new AnimationEnimies { X = 1200,},
                 new AnimationEnimies {X = 1350, },
                 new AnimationEnimies {X = 1500,},*/
+            };
+        }
+
+        public void SetPositionTrade()
+        {
+            traders = new List<Trader>
+            {
+                new Trader {X = 1000},
+                new Trader {X = 1750},
+                new Trader{X = 2750},
+                new Trader{X = 5150}
             };
         }
         private void KeyIsDown(KeyEventArgs e)
@@ -287,6 +311,18 @@ namespace Pain_and_Stealth
                 _animationPlayer.goLeft = false;
 
             _animationPlayer.AnimatePlayer(_animationPlayer.playerStartRight, 0, 0);
+        }
+
+        private void SetTraderImage()
+        {
+            foreach (var trader in traders)
+                trader.SetTraderImage();
+        }
+
+        private void DrawTraderImage(Graphics g)
+        {
+            foreach (var trader in traders)
+                trader.DrawImage(g);
         }
 
         private void SetEnemyImage()
