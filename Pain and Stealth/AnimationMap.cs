@@ -1,5 +1,6 @@
 ﻿using Pain_and_Stealth;
 using System;
+using System.CodeDom;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
@@ -13,6 +14,7 @@ namespace Pain_and_Stealth
         public Map StartMap1;
         public Map StartMap2;
         public Map StartMap3;
+        public Map StartMap4;
         public Map TransitionMap;
         public Map SecondMap1;
         public Map SecondMap2;
@@ -20,6 +22,8 @@ namespace Pain_and_Stealth
         public Map SecondMap4;
         public Map SecondMap5;
         public Map SecondMap6;
+        public Map FinalMap1;
+        public Map FinalMap2;
         public SizeMap ClientSize;
 
         public AnimationMap()
@@ -27,13 +31,16 @@ namespace Pain_and_Stealth
             StartMap1 = new Map { X = 0, Y = 0 };
             StartMap2 = new Map { X = 830, Y = 0 };
             StartMap3 = new Map { X = 1660, Y = 0 };
-            TransitionMap = new Map { X = 2490, Y = 0 };
-            SecondMap1 = new Map { X = 3320, Y = 0 };
-            SecondMap2 = new Map { X = 4150, Y = 0 };
-            SecondMap3 = new Map { X = 4980, Y = 0 };
-            SecondMap4 = new Map { X = 5810, Y = 0 };
-            SecondMap5 = new Map { X = 6640, Y = 0 };
-            SecondMap6 = new Map { X = 7470, Y = 0 };
+            StartMap4 = new Map { X = 2490, Y = 0 };
+            TransitionMap = new Map { X = 3320, Y = 0 };
+            SecondMap1 = new Map { X = 4150, Y = 0 };
+            SecondMap2 = new Map { X = 4980, Y = 0 };
+            SecondMap3 = new Map { X = 5810, Y = 0 };
+            SecondMap4 = new Map { X = 6640, Y = 0 };
+            SecondMap5 = new Map { X = 7470, Y = 0 };
+            SecondMap6 = new Map { X = 8300, Y = 0 };
+            FinalMap1 = new Map { X = 9130, Y = 0 };
+            FinalMap2 = new Map { X = 9960, Y = 0 };
             ClientSize = new SizeMap();
         }
 
@@ -42,6 +49,7 @@ namespace Pain_and_Stealth
             StartMap1.map = Image.FromFile("StartMap.png");
             StartMap2.map = Image.FromFile("StartMap.png");
             StartMap3.map = Image.FromFile("StartMap.png");
+            StartMap4.map = Image.FromFile("StartMap.png");
             TransitionMap.map = Image.FromFile("TransitionsSecondMap.png");
             SecondMap1.map = Image.FromFile("SecondMap.png");
             SecondMap2.map = Image.FromFile("SecondMap.png");
@@ -49,10 +57,14 @@ namespace Pain_and_Stealth
             SecondMap4.map = Image.FromFile("SecondMap.png");
             SecondMap5.map = Image.FromFile("SecondMap.png");
             SecondMap6.map = Image.FromFile("SecondMap.png");
+            FinalMap1.map = Image.FromFile("StartMenu.png");
+            FinalMap2.map = Image.FromFile("StartMenu.png");
         }
 
         public void DrawImage(Graphics g)
         {
+            g.DrawImage(FinalMap1.map, FinalMap1.X, FinalMap1.Y, ClientSize.Width, ClientSize.Height);
+            g.DrawImage(FinalMap2.map, FinalMap2.X, FinalMap2.Y, ClientSize.Width, ClientSize.Height);
             g.DrawImage(SecondMap2.map, SecondMap2.X, SecondMap2.Y, ClientSize.Width, ClientSize.Height);
             g.DrawImage(SecondMap1.map, SecondMap1.X, SecondMap1.Y, ClientSize.Width, ClientSize.Height);
             g.DrawImage(SecondMap3.map, SecondMap3.X, SecondMap3.Y, ClientSize.Width, ClientSize.Height);
@@ -63,6 +75,7 @@ namespace Pain_and_Stealth
             g.DrawImage(StartMap1.map, StartMap1.X, StartMap1.Y, ClientSize.Width, ClientSize.Height);
             g.DrawImage(StartMap2.map, StartMap2.X, StartMap2.Y, ClientSize.Width, ClientSize.Height);
             g.DrawImage(StartMap3.map, StartMap3.X, StartMap3.Y, ClientSize.Width, ClientSize.Height);
+            g.DrawImage(StartMap4.map, StartMap4.X, StartMap4.Y, ClientSize.Width, ClientSize.Height);
         }
     }
 }

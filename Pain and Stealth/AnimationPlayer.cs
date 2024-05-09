@@ -17,16 +17,32 @@ namespace Pain_and_Stealth
         public bool IsJump;
         public bool IsEndMap;
         public bool IsStartMap;
+
+        public int Id;
+
+        public bool PressStart;
+        public bool PressThirdChoice;
+        public bool PressFourthChoice;
+
         private int steps;
         public int force;
         public bool IsTrader;
         private int slowDowmFrameRate;
 
         private Image player;
+
         public List<string> playerMovementRight;
         public List<string> playerMovementLeft;
+
         public List<string> playerStartRight;
         public List<string> playerStartLeft;
+
+        public List<string> playerThirdLeft;
+        public List<string> playerThirdRight;
+
+        public List<string> playerFourthLeft;
+        public List<string> playerFourthRight;
+
         public bool Conflict = false;
         public bool StartPosition = true;
 
@@ -36,7 +52,6 @@ namespace Pain_and_Stealth
         public int Height { get; set; }
         public int Width { get; set; }
         public int Speed { get; set; }
-        public int Healthy { get; set; }
 
         public AnimationPlayer()
         {
@@ -45,17 +60,24 @@ namespace Pain_and_Stealth
             Height = 100;
             Width = 105;
             Speed = 3;
-            Healthy = 4;
+            playerFourthLeft = new List<string>();
+            playerFourthRight = new List<string>();
             playerStartRight = new List<string>();
             playerStartLeft = new List<string>();
             playerMovementRight = new List<string>();
             playerMovementLeft = new List<string>();
+            playerThirdLeft = new List<string>();
+            playerThirdRight = new List<string>();
             IsStartMap = true;
             ClientSize = new SizeMap();
         }
 
         public void SetPlayerImage()
         {
+            playerFourthLeft = Directory.GetFiles("HeroFourthMoveLeft", "*png").ToList();
+            playerFourthRight = Directory.GetFiles("HeroFourthMoveRight", "*png").ToList();
+            playerThirdRight = Directory.GetFiles("HeroThirdMoveRight", "*png").ToList();
+            playerThirdLeft = Directory.GetFiles("HeroThirdMoveLeft", "*png").ToList();
             playerStartRight = Directory.GetFiles("HeroRightStart", "*png").ToList();
             playerStartLeft = Directory.GetFiles("HeroLeftStart", "*png").ToList();
             playerMovementRight = Directory.GetFiles("HeroMoveRight", "*png").ToList();
@@ -73,13 +95,29 @@ namespace Pain_and_Stealth
             if (goLeft && X > 0)
             {
                 X -= Speed;
-                AnimatePlayer(playerStartLeft, 0, 4);
+
+                if (PressThirdChoice)
+                    AnimatePlayer(playerThirdLeft, 0, 4);
+                else if (PressStart)
+                    AnimatePlayer(playerMovementLeft, 0, 4);
+                else if (PressFourthChoice)
+                    AnimatePlayer(playerFourthLeft, 0, 4);
+                else
+                    AnimatePlayer(playerStartLeft, 0, 4);
             }
 
             if (goRight && X + Width < ClientSize.Width && !Conflict)
             {
                 X += Speed;
-                AnimatePlayer(playerStartRight, 1, 5);
+                
+                if (PressThirdChoice)
+                    AnimatePlayer(playerThirdRight, 1, 5);
+                else if (PressStart)
+                    AnimatePlayer(playerMovementRight, 1, 5);
+                else if (PressFourthChoice)
+                    AnimatePlayer(playerFourthRight, 1, 5);
+                else
+                    AnimatePlayer(playerStartRight, 1, 5);
             }
 
             if (IsJump)
@@ -99,6 +137,7 @@ namespace Pain_and_Stealth
                 map.StartMap1.X -= Speed;
                 map.StartMap2.X -= Speed;
                 map.StartMap3.X -= Speed;
+                map.StartMap4.X -= Speed;
                 map.TransitionMap.X -= Speed;
                 map.SecondMap1.X -= Speed;
                 map.SecondMap2.X -= Speed;
@@ -106,6 +145,8 @@ namespace Pain_and_Stealth
                 map.SecondMap4.X -= Speed;
                 map.SecondMap5.X -= Speed;
                 map.SecondMap6.X -= Speed;
+                map.FinalMap1.X -= Speed;
+                map.FinalMap2.X -= Speed;
 
                 traderButton.X -= Speed;
 
@@ -123,6 +164,7 @@ namespace Pain_and_Stealth
                 map.StartMap1.X += Speed;
                 map.StartMap2.X += Speed;
                 map.StartMap3.X += Speed;
+                map.StartMap4.X += Speed;
                 map.TransitionMap.X += Speed;
                 map.SecondMap1.X += Speed;
                 map.SecondMap2.X += Speed;
@@ -130,6 +172,8 @@ namespace Pain_and_Stealth
                 map.SecondMap4.X += Speed;
                 map.SecondMap5.X += Speed;
                 map.SecondMap6.X += Speed;
+                map.FinalMap1.X += Speed;
+                map.FinalMap2.X += Speed;
 
                 traderButton.X += Speed;
 
@@ -143,7 +187,7 @@ namespace Pain_and_Stealth
 
             if (map.StartMap1.X >= 0)
                 IsStartMap = true;
-            if (map.SecondMap6.X <= 500)
+            if (map.FinalMap2.X <= 500)
                 IsEndMap = true;
 
             foreach (var trader in traders)
@@ -153,12 +197,16 @@ namespace Pain_and_Stealth
                     var coord = trader.X + 45;
                     traderButton.Y = 375;
                     traderButton.X = coord;
+                    Id = trader.Id;
+                    IsTrader = true;
                 }
                 if (trader.X + 150 < X)
                 {
                     traderButton.Y = 1000;
+                    IsTrader = false;
                     continue;
                 }
+                
             }
         }
 

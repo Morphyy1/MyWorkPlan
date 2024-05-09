@@ -77,7 +77,7 @@ namespace Pain_and_Stealth
                 trainingForm.Show();
                 Hide();
             };
-            eixt.Click += (s, e) => Close();
+            eixt.Click += (s, e) => Application.Exit();
         }
     }
 }

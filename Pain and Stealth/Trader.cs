@@ -14,6 +14,7 @@ namespace Pain_and_Stealth
         private int steps;
         public int X { get; set; }
         public int Y { get; set; }
+        public int Id { get; set; }
         public int Height { get; set; }
         public int Width { get; set; }
         private int slowDowmFrameRate;

@@ -4,7 +4,7 @@
   <description asmv2:publisher="Pain and Stealth" asmv2:product="Pain and Stealth" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <compatibleFrameworks xmlns="urn:schemas-microsoft-com:clickonce.v2">
-    <framework targetVersion="4.7.2" profile="Full" supportedRuntime="4.0.30319" />
+    <framework targetVersion="4.8" profile="Full" supportedRuntime="4.0.30319" />
   </compatibleFrameworks>
   <dependency>
     <dependentAssembly dependencyType="install" codebase="Pain and Stealth.exe.manifest" size="3686">
@@ -14,7 +14,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>zHPBI2Zxi/WgM4VEwrvBHIoZqB8o2+qGtrS8CtDEkPk=</dsig:DigestValue>
+        <dsig:DigestValue>k745c7hemfPDaI0vZt/Z1mv6NGqT2BgwDlY8xrAkwZw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
