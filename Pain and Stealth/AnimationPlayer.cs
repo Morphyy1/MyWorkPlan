@@ -27,7 +27,7 @@ namespace Pain_and_Stealth
         private int steps;
         public int force;
         public bool IsTrader;
-        private int slowDowmFrameRate;
+        public int slowDowmFrameRate;
 
         private Image player;
 
@@ -86,7 +86,7 @@ namespace Pain_and_Stealth
         }
 
         public void Animation(AnimationMap map, List<AnimationEnimies> enimies,
-            Bullets bullet, List<Trader> traders, TraderButton traderButton)
+            Bullets bullet, List<Trader> traders, TraderButton traderButton, Boss boss)
         {
             if (bullet.IsFire)
             {
@@ -147,7 +147,7 @@ namespace Pain_and_Stealth
                 map.SecondMap6.X -= Speed;
                 map.FinalMap1.X -= Speed;
                 map.FinalMap2.X -= Speed;
-
+                boss.X -= Speed;
                 traderButton.X -= Speed;
 
                 foreach (var trader in traders)
@@ -174,7 +174,7 @@ namespace Pain_and_Stealth
                 map.SecondMap6.X += Speed;
                 map.FinalMap1.X += Speed;
                 map.FinalMap2.X += Speed;
-
+                boss.X += Speed;
                 traderButton.X += Speed;
 
                 foreach (var trader in traders)

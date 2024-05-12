@@ -78,6 +78,7 @@
     <Compile Include="AnimationEnimies.cs" />
     <Compile Include="AnimationMap.cs" />
     <Compile Include="AnimationPlayer.cs" />
+    <Compile Include="Boss.cs" />
     <Compile Include="Bullets.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>

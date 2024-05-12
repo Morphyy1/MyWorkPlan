@@ -13,14 +13,25 @@ namespace Pain_and_Stealth
 {
     public partial class Form1 : Form
     {
+        public bool firstButtonClick;
+        public bool secondhButtonClick;
+        public bool thirdButtonClick;
+        public bool fourthButtonClick;
+        public bool fifthButtonClick;
+
         public int BulletSpeed;
         public bool Fire;
         public bool IsTraderButton;
         public int EnemySpeed;
+        public int BossSpeed;
         private int damage;
-        private int steps;
+        private int Enemysteps;
+        private int Bosssteps;
+        private int EnemyLevelTwo;
+        private int EnemyLevelThree;
 
         private List<Trader> traders;
+        private Boss Boss;
         private TraderButton traderButton;
         private Bullets _bullet;
         private PictureBox[] _bullets;
@@ -43,11 +54,14 @@ namespace Pain_and_Stealth
             _animationMap = new AnimationMap();
             _healthyBar = new HealthyBar();
             traderButton = new TraderButton();
+            Boss = new Boss();
             _bullet = new Bullets();
+            SetAllImages();
+            EnemyLevelTwo = _enemySpawn.Count - 3;
+            EnemyLevelThree = EnemyLevelTwo - 6;
             BulletSpeed = 10;
             EnemySpeed = 2;
-
-            SetAllImages();
+            BossSpeed = 4;
         }
 
         private void SetChoice()
@@ -106,6 +120,7 @@ namespace Pain_and_Stealth
             first.Click += (sender, args) =>
             {
                 Controls.Remove(first);
+                firstButtonClick = true;
                 _animationPlayer.PressStart = true;
                 _animationPlayer.StartPosition = false;
                 IsTraderButton = false;
@@ -115,6 +130,8 @@ namespace Pain_and_Stealth
             {
                 Controls.Remove(second);
                 Controls.Remove(third);
+                secondhButtonClick = true;
+                _animationPlayer.slowDowmFrameRate -= 1;
                 _animationPlayer.Speed += 1;
                 IsTraderButton = false;
             };
@@ -123,6 +140,7 @@ namespace Pain_and_Stealth
             {
                 Controls.Remove(second);
                 Controls.Remove(third);
+                thirdButtonClick = true;
                 _animationPlayer.PressThirdChoice = true;
                 _animationPlayer.PressFourthChoice = false;
                 _animationPlayer.PressStart = false;
@@ -133,10 +151,12 @@ namespace Pain_and_Stealth
             fourth.Click += (sender, args) =>
             {
                 Controls.Remove(fifth);
-                Controls.Remove(fifth);
+                Controls.Remove(fourth);
+                fourthButtonClick = true;
                 _animationPlayer.PressFourthChoice = true;
                 _animationPlayer.PressThirdChoice = false;
                 _animationPlayer.PressStart = false;
+                _animationPlayer.slowDowmFrameRate -= 1;
                 _animationPlayer.Speed += 1;
                 BulletSpeed += 5;
                 IsTraderButton = false;
@@ -145,7 +165,8 @@ namespace Pain_and_Stealth
             fifth.Click += (sender, args) =>
             {
                 Controls.Remove(fifth);
-                Controls.Remove(fifth);
+                Controls.Remove(fourth);
+                fifthButtonClick = true;
                 BulletSpeed += 3;
                 IsTraderButton = false;
             };
@@ -161,15 +182,28 @@ namespace Pain_and_Stealth
                     switch (_animationPlayer.Id)
                     {
                         case 1:
-                            Controls.Add(first);
+                            if (!firstButtonClick)
+                                Controls.Add(first);
+                            else
+                                IsTraderButton = false;
                             break;
                         case 2:
-                            Controls.Add(second);
-                            Controls.Add(third);
+                            if (!secondhButtonClick && !thirdButtonClick)
+                            {
+                                Controls.Add(second);
+                                Controls.Add(third);
+                            }
+                            else
+                                IsTraderButton = false;
                             break;
                         case 3:
-                            Controls.Add(fourth);
-                            Controls.Add(fifth);
+                            if (!fourthButtonClick && !fifthButtonClick)
+                            {
+                                Controls.Add(fourth);
+                                Controls.Add(fifth);
+                            }
+                            else
+                                IsTraderButton = false;
                             break;
                     }
                 }
@@ -181,12 +215,12 @@ namespace Pain_and_Stealth
             enemy.Tick += (sender, args) =>
             {
                 AnimationAttack();
-                steps++;
-                if (steps == 18)
+                Enemysteps++;
+                if (Enemysteps == 18)
                     damage++;
-                if (steps > 18)
-                    steps = 0;
-                else if (damage == 5)
+                if (Enemysteps > 18)
+                    Enemysteps = 0;
+                else if (damage == 4)
                 {
                     playerTimer.Stop();
                     moveBulletsTimer.Stop();
@@ -203,6 +237,11 @@ namespace Pain_and_Stealth
             {
                 if (_enemySpawn.Count != 0)
                 {
+                    if (_enemySpawn.Count == EnemyLevelTwo)
+                        EnemySpeed = 4;
+                    if (_enemySpawn.Count == EnemyLevelThree)
+                        EnemySpeed = 5;
+
                     if (_enemySpawn[0].X <= 900)
                     {
                         AnimationRun();
@@ -215,7 +254,7 @@ namespace Pain_and_Stealth
                     }
                     else
                     {
-                        steps = 0;
+                        Enemysteps = 0;
                         enemyAttack.Stop();
                         enemy.Start();
                     }
@@ -244,8 +283,12 @@ namespace Pain_and_Stealth
                     else
                         _animationPlayer.Conflict = false;
                 }
+                if (_animationPlayer.X + 50 > Boss.X)
+                    _animationPlayer.Conflict = true;
+                else
+                    _animationPlayer.Conflict = false;
                 _animationPlayer.Animation(_animationMap, _enemySpawn,
-                    _bullet, traders, traderButton);
+                    _bullet, traders, traderButton, Boss);
                 Invalidate();
             };
         }
@@ -277,6 +320,64 @@ namespace Pain_and_Stealth
                 Enabled = false,
                 Interval = 1
             };
+            var bossTimer = new Timer
+            {
+                Enabled = true,
+                Interval = 1
+            };
+            var bossAttack = new Timer
+            {
+                Enabled = false,
+                Interval = 1
+            };
+            var bossDead = new Timer
+            {
+                Enabled = false,
+                Interval = 1
+            };
+
+            bossAttack.Tick += (sender, args) =>
+            {
+                Boss.AnimateAttack();
+                Bosssteps++;
+                if (Boss.X > _animationPlayer.X + 55)
+                {
+                    Bosssteps = 0;
+                    bossAttack.Stop();
+                    bossTimer.Start();
+                }
+                if (Bosssteps == 10)
+                    damage++;
+                if (Bosssteps > 10)
+                    Bosssteps = 0;
+                else if (damage == 4)
+                {
+                    playerTimer.Stop();
+                    moveBulletsTimer.Stop();
+                    enemyRun.Stop();
+                    Fire = false;
+                }
+                _healthyBar.AnimationHealthy(damage);
+            };
+
+            bossDead.Tick += (sender, args) =>
+            {
+                Boss.AnimateDead();
+            };
+
+            bossTimer.Tick += (sender, args) =>
+            {
+                if (Boss.X <= 900)
+                {
+                    Boss.AnimateMove();
+                    Boss.X -= BossSpeed;
+                }
+                if (Boss.X <= _animationPlayer.X + 55)
+                {
+                    bossTimer.Stop();
+                    bossAttack.Start();
+                }
+            };
 
             SetChoice();
             EnemyAttackTick(enemyAttack, playerTimer, moveBulletsTimer, enemyRun);
@@ -292,9 +393,8 @@ namespace Pain_and_Stealth
                 DrawTraderImage(g);
 
                 traderButton.DrawButtonImage(g);
-
-
                 _animationPlayer.DrawImage(g);
+                Boss.DrawImage(g);
                 _healthyBar.DrawImage(g);
                 if (_enemySpawn.Count != 0)
                     DrawImage(g);
@@ -381,6 +481,7 @@ namespace Pain_and_Stealth
 
             if (_enemySpawn.Count != 0)
                 SetEnemyImage();
+            Boss.SetEnimiesImage();
             _animationPlayer.SetPlayerImage();
             _animationMap.SetImagesMaps();
             SetTraderImage();
@@ -402,28 +503,28 @@ namespace Pain_and_Stealth
         {
             _enemySpawn = new List<AnimationEnimies>
             {
-                new AnimationEnimies { X = 2700,},
-                new AnimationEnimies { X = 2800,},
-                new AnimationEnimies { X = 2900,},
+                new AnimationEnimies { X = 2700},
+                new AnimationEnimies { X = 2800},
+                new AnimationEnimies { X = 2900},
 
-                new AnimationEnimies { X = 5050,},
-                new AnimationEnimies { X = 5150,},
-                new AnimationEnimies { X = 5250,},
-                new AnimationEnimies { X = 5350,},
-                new AnimationEnimies { X = 5450,},
-                new AnimationEnimies { X = 5550,},
+                new AnimationEnimies { X = 5050, Healthy = 5},
+                new AnimationEnimies { X = 5150, Healthy = 5},
+                new AnimationEnimies { X = 5250, Healthy = 5},
+                new AnimationEnimies { X = 5350, Healthy = 5},
+                new AnimationEnimies { X = 5450, Healthy = 5},
+                new AnimationEnimies { X = 5550, Healthy = 5},
 
 
-                new AnimationEnimies { X = 6650,},
-                new AnimationEnimies { X = 6750,},
-                new AnimationEnimies { X = 6850,},
-                new AnimationEnimies { X = 6950,},
-                new AnimationEnimies { X = 7050,},
-                new AnimationEnimies { X = 7150,},
-                new AnimationEnimies { X = 7250,},
-                new AnimationEnimies { X = 7350,},
-                new AnimationEnimies { X = 7450,},
-                new AnimationEnimies { X = 7550,}
+                new AnimationEnimies { X = 6650, Healthy = 6},
+                new AnimationEnimies { X = 6750, Healthy = 6},
+                new AnimationEnimies { X = 6850, Healthy = 6},
+                new AnimationEnimies { X = 6950, Healthy = 6},
+                new AnimationEnimies { X = 7050, Healthy = 6},
+                new AnimationEnimies { X = 7150, Healthy = 6},
+                new AnimationEnimies { X = 7250, Healthy = 6},
+                new AnimationEnimies { X = 7350, Healthy = 6},
+                new AnimationEnimies { X = 7450, Healthy = 6},
+                new AnimationEnimies { X = 7550, Healthy = 6}
             };
         }
 
