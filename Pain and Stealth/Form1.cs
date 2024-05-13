@@ -13,26 +13,27 @@ namespace Pain_and_Stealth
 {
     public partial class Form1 : Form
     {
-        public bool firstButtonClick;
-        public bool secondhButtonClick;
-        public bool thirdButtonClick;
-        public bool fourthButtonClick;
-        public bool fifthButtonClick;
+        private bool firstButtonClick;
+        private bool secondhButtonClick;
+        private bool thirdButtonClick;
+        private bool fourthButtonClick;
+        private bool fifthButtonClick;
 
-        public int BulletSpeed;
-        public bool Fire;
-        public bool IsTraderButton;
-        public int EnemySpeed;
-        public int BossSpeed;
+        private int BulletSpeed;
+        private bool Fire;
+        private bool IsTraderButton;
+        private bool IsFining;
+        private int EnemySpeed;
+        private int BossSpeed;
         private int damage;
         private int Enemysteps;
         private int Bosssteps;
         private int EnemyLevelTwo;
         private int EnemyLevelThree;
 
-        private List<Trader> traders;
-        private Boss Boss;
-        private TraderButton traderButton;
+        private List<Trader> _traders;
+        private Boss _boss;
+        private TraderButton _traderButton;
         private Bullets _bullet;
         private PictureBox[] _bullets;
         private HealthyBar _healthyBar;
@@ -53,9 +54,9 @@ namespace Pain_and_Stealth
             _animationPlayer = new AnimationPlayer();
             _animationMap = new AnimationMap();
             _healthyBar = new HealthyBar();
-            traderButton = new TraderButton();
-            Boss = new Boss();
+            _traderButton = new TraderButton();
             _bullet = new Bullets();
+            _boss = new Boss();
             SetAllImages();
             EnemyLevelTwo = _enemySpawn.Count - 3;
             EnemyLevelThree = EnemyLevelTwo - 6;
@@ -283,15 +284,64 @@ namespace Pain_and_Stealth
                     else
                         _animationPlayer.Conflict = false;
                 }
-                if (_animationPlayer.X + 50 > Boss.X)
+                if (_animationPlayer.X + 50 > _boss.X)
                     _animationPlayer.Conflict = true;
                 else
                     _animationPlayer.Conflict = false;
                 _animationPlayer.Animation(_animationMap, _enemySpawn,
-                    _bullet, traders, traderButton, Boss);
+                    _bullet, _traders, _traderButton, _boss);
                 Invalidate();
             };
         }
+
+        public void BossTick(Timer boss, Timer bossAttack)
+        {
+            boss.Tick += (sender, args) =>
+            {
+                if (_boss.X <= 900)
+                {
+                    _boss.AnimateMove();
+                    _boss.X -= BossSpeed;
+                }
+                if (_boss.X <= _animationPlayer.X + 55)
+                {
+                    boss.Stop();
+                    bossAttack.Start();
+                }
+            };
+        }
+
+        public void BossAttack(Timer boss, Timer bossTimer, Timer player, Timer bullets, Timer enemy)
+        {
+            boss.Tick += (sender, args) =>
+            {
+                _boss.AnimateAttack();
+                Bosssteps++;
+                if (_boss.X > _animationPlayer.X + 55)
+                {
+                    Bosssteps = 0;
+                    boss.Stop();
+                    bossTimer.Start();
+                }
+                if (Bosssteps == 10)
+                    damage++;
+                if (Bosssteps > 10)
+                    Bosssteps = 0;
+                else if (damage == 4)
+                {
+                    player.Stop();
+                    bullets.Stop();
+                    enemy.Stop();
+                    Fire = false;
+                }
+                _healthyBar.AnimationHealthy(damage);
+            };
+        }
+
+        public void BossDead(Timer boss) => boss.Tick += (sender, args) =>
+        {
+            _boss.AnimateDead();
+        };
 
         private void EventsCollection()
         {
@@ -336,55 +386,24 @@ namespace Pain_and_Stealth
                 Interval = 1
             };
 
-            bossAttack.Tick += (sender, args) =>
-            {
-                Boss.AnimateAttack();
-                Bosssteps++;
-                if (Boss.X > _animationPlayer.X + 55)
-                {
-                    Bosssteps = 0;
-                    bossAttack.Stop();
-                    bossTimer.Start();
-                }
-                if (Bosssteps == 10)
-                    damage++;
-                if (Bosssteps > 10)
-                    Bosssteps = 0;
-                else if (damage == 4)
-                {
-                    playerTimer.Stop();
-                    moveBulletsTimer.Stop();
-                    enemyRun.Stop();
-                    Fire = false;
-                }
-                _healthyBar.AnimationHealthy(damage);
-            };
-
-            bossDead.Tick += (sender, args) =>
-            {
-                Boss.AnimateDead();
-            };
-
-            bossTimer.Tick += (sender, args) =>
-            {
-                if (Boss.X <= 900)
-                {
-                    Boss.AnimateMove();
-                    Boss.X -= BossSpeed;
-                }
-                if (Boss.X <= _animationPlayer.X + 55)
-                {
-                    bossTimer.Stop();
-                    bossAttack.Start();
-                }
-            };
-
             SetChoice();
             EnemyAttackTick(enemyAttack, playerTimer, moveBulletsTimer, enemyRun);
             EnemyRunTick(enemyRun, enemyAttack);
             EnemyDeadTick(enemyDead);
             PlayerTick(playerTimer);
+            BossTick(bossTimer, bossAttack);
+            BossAttack(bossAttack, bossTimer, playerTimer, moveBulletsTimer, enemyRun);
+            BossDead(bossDead);
+            FormPaint();
 
+            FormClosing += (sender, args) => Application.Exit();
+            moveBulletsTimer.Tick += (sender, args) => BulletBehavior(enemyRun, enemyDead, bossTimer, bossAttack, bossDead);
+            KeyDown += (sender, args) => KeyIsDown(args);
+            KeyUp += (sender, args) => KeyIsUp(args);
+        }
+
+        public void FormPaint()
+        {
             Paint += (sender, args) =>
             {
                 var g = args.Graphics;
@@ -392,27 +411,13 @@ namespace Pain_and_Stealth
                 _animationMap.DrawImage(g);
                 DrawTraderImage(g);
 
-                traderButton.DrawButtonImage(g);
+                _traderButton.DrawButtonImage(g);
                 _animationPlayer.DrawImage(g);
-                Boss.DrawImage(g);
+                _boss.DrawImage(g);
                 _healthyBar.DrawImage(g);
                 if (_enemySpawn.Count != 0)
                     DrawImage(g);
             };
-
-            FormClosing += (sender, args) => Application.Exit();
-            moveBulletsTimer.Tick += (sender, args) => BulletBehavior(enemyRun, enemyDead);
-            KeyDown += (sender, args) => KeyIsDown(args);
-            KeyUp += (sender, args) => KeyIsUp(args);
-        }
-
-        private void AnimationRun() => _enemySpawn[0].AnimationRun();
-        private void AnimationDead() => _enemySpawn[0].AnimationDead();
-        private void AnimationAttack() => _enemySpawn[0].AnimationAttack();
-        private void TraderAnimation()
-        {
-            foreach (var tard in traders)
-                tard.Animate();
         }
 
         public void SetUpForBullets()
@@ -427,10 +432,18 @@ namespace Pain_and_Stealth
             }
         }
 
-        public void BulletBehavior(Timer enemyRun, Timer enemyDead)
+        public void BulletBehavior(Timer enemyRun, Timer enemyDead, Timer bossMove, Timer bossAttack, Timer bossDead) // Еще не трогал
         {
             for (var i = 0; i < _bullets.Length; i++)
             {
+                if (_boss.Healthy == 0) 
+                {
+                    bossMove.Stop();
+                    bossAttack.Stop();
+                    bossDead.Start();
+                    if (!_boss.anim)
+                        bossDead.Stop();
+                }
                 if (_enemySpawn.Count != 0)
                 {
                     if (_bullets[i].Left < _enemySpawn[0].X)
@@ -459,6 +472,13 @@ namespace Pain_and_Stealth
                     if (_enemySpawn[0].Healthy == 0)
                         _enemySpawn.Remove(_enemySpawn[0]);
                 }
+                else if (_bullets[i].Left > _boss.X + 90 && Fire 
+                    && _bullets[0].Location.Y != _animationPlayer.Y + 50)
+                {
+                    _bullets[i].Left = -10000;
+                    _boss.Healthy--;
+                    Fire = false;
+                }
                 else if (_bullets[i].Left > 850)
                 {
                     Fire = false;
@@ -470,7 +490,6 @@ namespace Pain_and_Stealth
             }
         }
         
-
         public void SetAllImages()
         { 
             SetBackgroundImage();
@@ -481,11 +500,11 @@ namespace Pain_and_Stealth
 
             if (_enemySpawn.Count != 0)
                 SetEnemyImage();
-            Boss.SetEnimiesImage();
+            _boss.SetEnimiesImage();
             _animationPlayer.SetPlayerImage();
             _animationMap.SetImagesMaps();
             SetTraderImage();
-            traderButton.SetButtonImage();
+            _traderButton.SetButtonImage();
             _healthyBar.SetIamage();
 
         }
@@ -530,7 +549,7 @@ namespace Pain_and_Stealth
 
         public void SetPositionTrade()
         {
-            traders = new List<Trader>
+            _traders = new List<Trader>
             {
                 new Trader {X = 1750, Id = 1},
                 new Trader{X = 3400, Id = 2},
@@ -538,14 +557,16 @@ namespace Pain_and_Stealth
             };
         }
 
+
         private void KeyIsDown(KeyEventArgs e)
         {
             if (e.KeyCode == Keys.D)
                 _animationPlayer.goRight = true;
             if (e.KeyCode == Keys.A)
                 _animationPlayer.goLeft = true;
-            if (e.KeyCode == Keys.F && !(_animationPlayer.goLeft || _animationPlayer.goRight) && !Fire && !_animationPlayer.StartPosition)
+            if (e.KeyCode == Keys.F && !(_animationPlayer.goLeft || _animationPlayer.goRight) && !Fire && !_animationPlayer.StartPosition && !IsFining)
             {
+                IsFining = true;
                 Fire = true;
                 for (var i = 0; i < _bullets.Length; i++)
                     _bullets[i].Location = new Point(_animationPlayer.X + 100 + i * 50, _animationPlayer.Y + 50);
@@ -560,7 +581,6 @@ namespace Pain_and_Stealth
                 }
             }
 
-
             if (e.KeyCode == Keys.E && _animationPlayer.IsTrader)
                 IsTraderButton = true;
         }
@@ -569,6 +589,8 @@ namespace Pain_and_Stealth
         {
             if (e.KeyCode == Keys.D)
                 _animationPlayer.goRight = false;
+            if (e.KeyCode == Keys.F)
+                IsFining = false;
             if (e.KeyCode == Keys.A)
                 _animationPlayer.goLeft = false;
 
@@ -584,13 +606,13 @@ namespace Pain_and_Stealth
 
         private void SetTraderImage()
         {
-            foreach (var trader in traders)
+            foreach (var trader in _traders)
                 trader.SetTraderImage();
         }
 
         private void DrawTraderImage(Graphics g)
         {
-            foreach (var trader in traders)
+            foreach (var trader in _traders)
                 trader.DrawImage(g);
         }
 
@@ -605,5 +627,18 @@ namespace Pain_and_Stealth
             foreach (var enemy in _enemySpawn)
                 enemy.DrawImage(g);
         }
+
+        private void TraderAnimation()
+        {
+            foreach (var tard in _traders)
+                tard.Animate();
+        }
+
+        private void AnimationRun() => _enemySpawn[0].AnimationRun();
+
+        private void AnimationDead() => _enemySpawn[0].AnimationDead();
+
+        private void AnimationAttack() => _enemySpawn[0].AnimationAttack();
+
     }
 }

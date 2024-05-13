@@ -26,10 +26,7 @@ namespace Pain_and_Stealth
         }
 
 
-        public void SetImage()
-        {
-            bullet = Image.FromFile("Bullet.png");
-        }
+        public void SetImage() => bullet = Image.FromFile("Bullet.png");
 
         public void DrawImage(Graphics g) => g.DrawImage(bullet,
             X, Y, Width, Height);

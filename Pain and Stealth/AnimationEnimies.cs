@@ -11,20 +11,20 @@ namespace Pain_and_Stealth
 {
     public class AnimationEnimies
     {
-        public Image enimies;
-        List<string> EnemiesDead;
-        List<string> EnemiesRun;
-        List<string> EnemiesAttack;
+        private Image enimies;
         private int slowDowmFrameRate;
         public int slowSteps;
         private int steps;
         public bool anim = true;
         public int Healthy;
+        private List<string> EnemiesDead;
+        private List<string> EnemiesRun;
+        private List<string> EnemiesAttack;
 
         public int X { get; set; }
         public int Y { get; set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
+        private int Height { get; set; }
+        private int Width { get; set; }
 
         public AnimationEnimies()
         {
@@ -45,24 +45,14 @@ namespace Pain_and_Stealth
             enimies = Image.FromFile(EnemiesDead[0]);
         }
 
-        public void StateAnimation()
-        {
-            AnimateEnimies(EnemiesDead, 0,0);
-        }
+        public void StateAnimation() => AnimateEnimies(EnemiesDead, 0, 0);
 
-        public void AnimationDead()
-        {
-            AnimateEnimies(EnemiesDead, 0, 4);
-        }
 
-        public void AnimationRun()
-        {
-            AnimateEnimies(EnemiesRun, 0, 5);
-        }
-        public void AnimationAttack()
-        {
-            AnimateEnimies(EnemiesAttack, 0, 8);
-        }
+        public void AnimationDead() => AnimateEnimies(EnemiesDead, 0, 4);
+
+        public void AnimationRun() => AnimateEnimies(EnemiesRun, 0, 5);
+
+        public void AnimationAttack() => AnimateEnimies(EnemiesAttack, 0, 8);
 
         public void AnimateEnimies(List<string> Move, int start, int end)
         {

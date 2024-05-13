@@ -10,13 +10,14 @@ namespace Pain_and_Stealth
 {
     public class Trader
     {
-        public Image trader;
+        private Image trader;
         private int steps;
         public int X { get; set; }
         public int Y { get; set; }
         public int Id { get; set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
+        private int Height { get; set; }
+        private int Width { get; set; }
+
         private int slowDowmFrameRate;
         public List<string> traderAniamtions;
 
@@ -48,10 +49,7 @@ namespace Pain_and_Stealth
             trader = Image.FromFile(Move[steps]);
         }
 
-        public void Animate()
-        {
-            AnimateTrader(traderAniamtions, 0, 8);
-        }
+        public void Animate() => AnimateTrader(traderAniamtions, 0, 8);
 
         public void DrawImage(Graphics g) => g.DrawImage(trader,
             X, Y, Width, Height);

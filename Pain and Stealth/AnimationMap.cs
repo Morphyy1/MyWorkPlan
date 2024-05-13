@@ -26,6 +26,11 @@ namespace Pain_and_Stealth
         public Map FinalMap2;
         public SizeMap ClientSize;
 
+        private const string startMap = "StartMap.png";
+        private const string secondMap = "SecondMap.png";
+        private const string transitionMap = "TransitionsSecondMap.png";
+        private const string finalMap = "StartMenu.png";
+
         public AnimationMap()
         {
             StartMap1 = new Map { X = 0, Y = 0 };
@@ -46,19 +51,19 @@ namespace Pain_and_Stealth
 
         public void SetImagesMaps()
         {
-            StartMap1.map = Image.FromFile("StartMap.png");
-            StartMap2.map = Image.FromFile("StartMap.png");
-            StartMap3.map = Image.FromFile("StartMap.png");
-            StartMap4.map = Image.FromFile("StartMap.png");
-            TransitionMap.map = Image.FromFile("TransitionsSecondMap.png");
-            SecondMap1.map = Image.FromFile("SecondMap.png");
-            SecondMap2.map = Image.FromFile("SecondMap.png");
-            SecondMap3.map = Image.FromFile("SecondMap.png");
-            SecondMap4.map = Image.FromFile("SecondMap.png");
-            SecondMap5.map = Image.FromFile("SecondMap.png");
-            SecondMap6.map = Image.FromFile("SecondMap.png");
-            FinalMap1.map = Image.FromFile("StartMenu.png");
-            FinalMap2.map = Image.FromFile("StartMenu.png");
+            StartMap1.map = Image.FromFile(startMap);
+            StartMap2.map = Image.FromFile(startMap);
+            StartMap3.map = Image.FromFile(startMap);
+            StartMap4.map = Image.FromFile(startMap);
+            TransitionMap.map = Image.FromFile(transitionMap);
+            SecondMap1.map = Image.FromFile(secondMap);
+            SecondMap2.map = Image.FromFile(secondMap);
+            SecondMap3.map = Image.FromFile(secondMap);
+            SecondMap4.map = Image.FromFile(secondMap);
+            SecondMap5.map = Image.FromFile(secondMap);
+            SecondMap6.map = Image.FromFile(secondMap);
+            FinalMap1.map = Image.FromFile(finalMap);
+            FinalMap2.map = Image.FromFile(finalMap);
         }
 
         public void DrawImage(Graphics g)

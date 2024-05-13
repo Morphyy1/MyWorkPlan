@@ -32,25 +32,25 @@ namespace Pain_and_Stealth
         private Image player;
 
         public List<string> playerMovementRight;
-        public List<string> playerMovementLeft;
+        private List<string> playerMovementLeft;
 
         public List<string> playerStartRight;
-        public List<string> playerStartLeft;
+        private List<string> playerStartLeft;
 
-        public List<string> playerThirdLeft;
+        private List<string> playerThirdLeft;
         public List<string> playerThirdRight;
 
-        public List<string> playerFourthLeft;
+        private List<string> playerFourthLeft;
         public List<string> playerFourthRight;
 
-        public bool Conflict = false;
-        public bool StartPosition = true;
+        public bool Conflict;
+        public bool StartPosition;
 
         private SizeMap ClientSize;
         public int X { get; set; }
         public int Y { get; set; }
-        public int Height { get; set; }
-        public int Width { get; set; }
+        private int Height { get; set; }
+        private int Width { get; set; }
         public int Speed { get; set; }
 
         public AnimationPlayer()
@@ -68,6 +68,7 @@ namespace Pain_and_Stealth
             playerMovementLeft = new List<string>();
             playerThirdLeft = new List<string>();
             playerThirdRight = new List<string>();
+            StartPosition = true;
             IsStartMap = true;
             ClientSize = new SizeMap();
         }
@@ -96,28 +97,13 @@ namespace Pain_and_Stealth
             {
                 X -= Speed;
 
-                if (PressThirdChoice)
-                    AnimatePlayer(playerThirdLeft, 0, 4);
-                else if (PressStart)
-                    AnimatePlayer(playerMovementLeft, 0, 4);
-                else if (PressFourthChoice)
-                    AnimatePlayer(playerFourthLeft, 0, 4);
-                else
-                    AnimatePlayer(playerStartLeft, 0, 4);
+                ChoiceMoveLeft();
             }
 
             if (goRight && X + Width < ClientSize.Width && !Conflict)
             {
                 X += Speed;
-                
-                if (PressThirdChoice)
-                    AnimatePlayer(playerThirdRight, 1, 5);
-                else if (PressStart)
-                    AnimatePlayer(playerMovementRight, 1, 5);
-                else if (PressFourthChoice)
-                    AnimatePlayer(playerFourthRight, 1, 5);
-                else
-                    AnimatePlayer(playerStartRight, 1, 5);
+                ChoiceMoveRight();
             }
 
             if (IsJump)
@@ -134,19 +120,7 @@ namespace Pain_and_Stealth
 
             if (X >= 400 && goRight && !IsEndMap && !Conflict)
             {
-                map.StartMap1.X -= Speed;
-                map.StartMap2.X -= Speed;
-                map.StartMap3.X -= Speed;
-                map.StartMap4.X -= Speed;
-                map.TransitionMap.X -= Speed;
-                map.SecondMap1.X -= Speed;
-                map.SecondMap2.X -= Speed;
-                map.SecondMap3.X -= Speed;
-                map.SecondMap4.X -= Speed;
-                map.SecondMap5.X -= Speed;
-                map.SecondMap6.X -= Speed;
-                map.FinalMap1.X -= Speed;
-                map.FinalMap2.X -= Speed;
+                MovingMapRight(map);
                 boss.X -= Speed;
                 traderButton.X -= Speed;
 
@@ -161,19 +135,7 @@ namespace Pain_and_Stealth
             }
             if (X <= 200 && goLeft && !IsStartMap)
             {
-                map.StartMap1.X += Speed;
-                map.StartMap2.X += Speed;
-                map.StartMap3.X += Speed;
-                map.StartMap4.X += Speed;
-                map.TransitionMap.X += Speed;
-                map.SecondMap1.X += Speed;
-                map.SecondMap2.X += Speed;
-                map.SecondMap3.X += Speed;
-                map.SecondMap4.X += Speed;
-                map.SecondMap5.X += Speed;
-                map.SecondMap6.X += Speed;
-                map.FinalMap1.X += Speed;
-                map.FinalMap2.X += Speed;
+                MovingMapLeft(map);
                 boss.X += Speed;
                 traderButton.X += Speed;
 
@@ -208,6 +170,65 @@ namespace Pain_and_Stealth
                 }
                 
             }
+        }
+
+        private void ChoiceMoveLeft()
+        {
+            if (PressThirdChoice)
+                AnimatePlayer(playerThirdLeft, 0, 4);
+            else if (PressStart)
+                AnimatePlayer(playerMovementLeft, 0, 4);
+            else if (PressFourthChoice)
+                AnimatePlayer(playerFourthLeft, 0, 4);
+            else
+                AnimatePlayer(playerStartLeft, 0, 4);
+        }
+
+        private void ChoiceMoveRight()
+        {
+            if (PressThirdChoice)
+                AnimatePlayer(playerThirdRight, 1, 5);
+            else if (PressStart)
+                AnimatePlayer(playerMovementRight, 1, 5);
+            else if (PressFourthChoice)
+                AnimatePlayer(playerFourthRight, 1, 5);
+            else
+                AnimatePlayer(playerStartRight, 1, 5);
+        }
+
+
+        private void MovingMapLeft(AnimationMap map)
+        {
+            map.StartMap1.X += Speed;
+            map.StartMap2.X += Speed;
+            map.StartMap3.X += Speed;
+            map.StartMap4.X += Speed;
+            map.TransitionMap.X += Speed;
+            map.SecondMap1.X += Speed;
+            map.SecondMap2.X += Speed;
+            map.SecondMap3.X += Speed;
+            map.SecondMap4.X += Speed;
+            map.SecondMap5.X += Speed;
+            map.SecondMap6.X += Speed;
+            map.FinalMap1.X += Speed;
+            map.FinalMap2.X += Speed;
+        }
+
+        private void MovingMapRight(AnimationMap map)
+        {
+            map.StartMap1.X -= Speed;
+            map.StartMap2.X -= Speed;
+            map.StartMap3.X -= Speed;
+            map.StartMap4.X -= Speed;
+            map.TransitionMap.X -= Speed;
+            map.SecondMap1.X -= Speed;
+            map.SecondMap2.X -= Speed;
+            map.SecondMap3.X -= Speed;
+            map.SecondMap4.X -= Speed;
+            map.SecondMap5.X -= Speed;
+            map.SecondMap6.X -= Speed;
+            map.FinalMap1.X -= Speed;
+            map.FinalMap2.X -= Speed;
         }
 
         public void AnimatePlayer(List<string> Move, int start, int end)
