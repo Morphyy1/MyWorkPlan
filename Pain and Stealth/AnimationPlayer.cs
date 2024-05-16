@@ -87,7 +87,8 @@ namespace Pain_and_Stealth
         }
 
         public void Animation(AnimationMap map, List<AnimationEnimies> enimies,
-            Bullets bullet, List<Trader> traders, TraderButton traderButton, Boss boss)
+            Bullets bullet, List<Trader> traders, TraderButton traderButton, Boss boss,
+            ExplosionStar explosion, SuperStar star)
         {
             if (bullet.IsFire)
             {
@@ -121,6 +122,8 @@ namespace Pain_and_Stealth
             if (X >= 400 && goRight && !IsEndMap && !Conflict)
             {
                 MovingMapRight(map);
+                star.X -= Speed;
+                explosion.X -= Speed;
                 boss.X -= Speed;
                 traderButton.X -= Speed;
 
@@ -136,6 +139,8 @@ namespace Pain_and_Stealth
             if (X <= 200 && goLeft && !IsStartMap)
             {
                 MovingMapLeft(map);
+                star.X += Speed;
+                explosion.X += Speed;
                 boss.X += Speed;
                 traderButton.X += Speed;
 

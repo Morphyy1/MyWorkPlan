@@ -24,7 +24,7 @@ namespace Pain_and_Stealth
         public int X { get; set; }
         public int Y { get; set; }
         private int Height { get; set; }
-        private int Width { get; set; }
+        public int Width { get; set; }
 
         public AnimationEnimies()
         {

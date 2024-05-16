@@ -25,7 +25,6 @@ namespace Pain_and_Stealth
             Width = 15;
         }
 
-
         public void SetImage() => bullet = Image.FromFile("Bullet.png");
 
         public void DrawImage(Graphics g) => g.DrawImage(bullet,

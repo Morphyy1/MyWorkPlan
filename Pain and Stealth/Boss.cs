@@ -14,7 +14,7 @@ namespace Pain_and_Stealth
         public int X { get; set; }
         public int Y { get; set; }
         private int Height { get; set; }
-        private int Width { get; set; }
+        public int Width { get; set; }
         public int Healthy { get; set; }
 
         public List<string> BossMove;
@@ -30,7 +30,7 @@ namespace Pain_and_Stealth
             Y = 290;
             Height = 245;
             Width = 200;
-            Healthy = 5;
+            Healthy = 14;
         }
 
         public void SetEnimiesImage()
