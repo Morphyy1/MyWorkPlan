@@ -22,9 +22,9 @@ namespace Pain_and_Stealth
 
         public ExplosionStar()
         {
-            Y = 470;
-            Width = 80;
-            Height = 74;
+            Y = 370;
+            Width = 205;
+            Height = 189;
             AnimationExplosion = new List<string>();
         }
 
