@@ -42,14 +42,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pain and Stealth.exe" size="45024">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Pain and Stealth.exe" size="49632">
       <assemblyIdentity name="Pain and Stealth" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>Mr/w7due2xPsfda4Y6XEdV7cs385GtIkCqNKbsUErn8=</dsig:DigestValue>
+        <dsig:DigestValue>rquFaj1ygOdRY6pYlnZj88rhj30UIrpZdDmDEeFftoU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

@@ -3,12 +3,28 @@
   "WorkspaceRootPath": "C:\\C#Game\\Pain and Stealth\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|c:\\c#game\\pain and stealth\\pain and stealth\\partial\\bossbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\partial\\bossbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|c:\\c#game\\pain and stealth\\pain and stealth\\partial\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\partial\\event.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|c:\\c#game\\pain and stealth\\pain and stealth\\partial\\sounds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\partial\\sounds.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|c:\\c#game\\pain and stealth\\pain and stealth\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|C:\\C#Game\\Pain and Stealth\\pain and stealth\\explosionstar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\explosionstar.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|c:\\c#game\\pain and stealth\\pain and stealth\\partial\\images.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\partial\\images.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|c:\\c#game\\pain and stealth\\pain and stealth\\partial\\bulletbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C8391F29-C651-4B6F-852E-DDCCC82149C7}|Pain and Stealth\\Pain and Stealth.csproj|solutionrelative:pain and stealth\\partial\\bulletbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -30,28 +46,81 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Form1.cs",
-              "RelativeDocumentMoniker": "Pain and Stealth\\Form1.cs",
-              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Form1.cs",
-              "RelativeToolTip": "Pain and Stealth\\Form1.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABMDAAANAAAA",
+              "DocumentIndex": 2,
+              "Title": "Sounds.cs",
+              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Partial\\Sounds.cs",
+              "RelativeDocumentMoniker": "Pain and Stealth\\Partial\\Sounds.cs",
+              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Partial\\Sounds.cs",
+              "RelativeToolTip": "Pain and Stealth\\Partial\\Sounds.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-30T04:31:35.286Z",
+              "WhenOpened": "2024-05-27T09:40:08.065Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ExplosionStar.cs",
-              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\ExplosionStar.cs",
-              "RelativeDocumentMoniker": "Pain and Stealth\\ExplosionStar.cs",
-              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\ExplosionStar.cs",
-              "RelativeToolTip": "Pain and Stealth\\ExplosionStar.cs",
-              "ViewState": "AQIAABUAAAAAAAAAAAAmwBgAAAARAAAA",
+              "Title": "Event.cs",
+              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Partial\\Event.cs",
+              "RelativeDocumentMoniker": "Pain and Stealth\\Partial\\Event.cs",
+              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Partial\\Event.cs",
+              "RelativeToolTip": "Pain and Stealth\\Partial\\Event.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAgAAAAJAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-16T08:36:33.893Z"
+              "WhenOpened": "2024-05-27T09:39:44.149Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BossBehavior.cs",
+              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Partial\\BossBehavior.cs",
+              "RelativeDocumentMoniker": "Pain and Stealth\\Partial\\BossBehavior.cs",
+              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Partial\\BossBehavior.cs",
+              "RelativeToolTip": "Pain and Stealth\\Partial\\BossBehavior.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T09:39:25.657Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Form1.cs",
+              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Form1.cs",
+              "RelativeDocumentMoniker": "Pain and Stealth\\Form1.cs",
+              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Form1.cs",
+              "RelativeToolTip": "Pain and Stealth\\Form1.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T09:29:19.973Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Images.cs",
+              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Partial\\Images.cs",
+              "RelativeDocumentMoniker": "Pain and Stealth\\Partial\\Images.cs",
+              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Partial\\Images.cs",
+              "RelativeToolTip": "Pain and Stealth\\Partial\\Images.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAoAAAAMAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T09:36:26.552Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "BulletBehavior.cs",
+              "DocumentMoniker": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Partial\\BulletBehavior.cs",
+              "RelativeDocumentMoniker": "Pain and Stealth\\Partial\\BulletBehavior.cs",
+              "ToolTip": "C:\\C#Game\\Pain and Stealth\\Pain and Stealth\\Partial\\BulletBehavior.cs",
+              "RelativeToolTip": "Pain and Stealth\\Partial\\BulletBehavior.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-27T09:33:06.342Z",
+              "EditorCaption": ""
             }
           ]
         }

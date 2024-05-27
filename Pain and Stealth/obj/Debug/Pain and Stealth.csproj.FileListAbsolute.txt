@@ -14,3 +14,6 @@ C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain and Stealth.applicati
 C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain_and_Stealth.Menu.resources
 C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain_and_Stealth.Form1.resources
 C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain_and_Stealth.TrainingForm.resources
+C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Interop.MediaPlayer.dll
+C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Interop.WMPLib.dll
+C:\C#Game\Pain and Stealth\Pain and Stealth\obj\Debug\Pain and Stealth.csproj.ResolveComReference.cache

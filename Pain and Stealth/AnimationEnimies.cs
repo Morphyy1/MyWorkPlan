@@ -1,11 +1,7 @@
-﻿using Pain_and_Stealth;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Pain_and_Stealth
 {

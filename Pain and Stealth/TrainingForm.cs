@@ -1,21 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Drawing;
 using System.Windows.Forms;
+using WMPLib;
 
 namespace Pain_and_Stealth
 {
     public partial class TrainingForm : Form
     {
+        private static WindowsMediaPlayer SfxSound;
         public TrainingForm()
         {
             InitializeComponent();
             SetUp();
+
+            SfxSound = new WindowsMediaPlayer { URL = "Songs\\Sfx.mp3" };
+            SfxSound.settings.volume = 40;
         }
 
         public void SetUp()
@@ -60,15 +58,21 @@ namespace Pain_and_Stealth
             {
                 var menu = new Menu();
                 menu.Show();
+                SfxSound.controls.play();
                 Hide();
             };
 
             FormClosing += (s, e) => Application.Exit();
 
-            Controls.Add(trainingFirst);
-            Controls.Add(trainingSecond);
-            Controls.Add(trainingThird);
-            Controls.Add(backButton);
+            SetControls(trainingFirst, trainingSecond, trainingThird, backButton);
+        }
+
+        private void SetControls(PictureBox First, PictureBox Second, PictureBox Third, Button back)
+        {
+            Controls.Add(First);
+            Controls.Add(Second);
+            Controls.Add(Third);
+            Controls.Add(back);
         }
     }
 }

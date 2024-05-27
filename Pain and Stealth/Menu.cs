@@ -1,26 +1,50 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+
+using WMPLib;
 
 namespace Pain_and_Stealth
 {
     public partial class Menu : Form
     {
+        private static Timer SoundTimer;
+        private static int TransitionsCount;
+        private static WindowsMediaPlayer SfxSound;
+        private static WindowsMediaPlayer MenuSong;
+
         public Menu()
         {
             SetUp();
             InitializeComponent();
+            if (TransitionsCount == 0)
+            {
+                MenuSong = new WindowsMediaPlayer { URL = "Songs\\Menu.mp3" };
+                SfxSound = new WindowsMediaPlayer { URL = "Songs\\Sfx.mp3" };
+                SfxSound.settings.volume = 40;
+                MenuSong.settings.volume = 50;
+                SoundTimer = new Timer();
+                SoundTimer.Interval = 10;
+                SoundTimer.Tick += new EventHandler(SoundRepeat);
+                MenuSong.PlayStateChange += new WMPLib._WMPOCXEvents_PlayStateChangeEventHandler(CheckMediaState);
+                MenuSong.controls.play();
+            }   
+        }
+
+        private void SoundRepeat(object s, EventArgs e)
+        {
+            SoundTimer.Stop();
+            MenuSong.controls.play();
+        }
+
+        private void CheckMediaState(int state)
+        {
+            if (state == (int)WMPLib.WMPPlayState.wmppsMediaEnded)
+                SoundTimer.Start();
         }
 
         public void SetUp()
-        {
+        { 
             BackgroundImage = Image.FromFile("StartMenu.png");
             BackgroundImageLayout = ImageLayout.Stretch;
             var pict = new PictureBox
@@ -69,15 +93,30 @@ namespace Pain_and_Stealth
             {
                 Form1 game = new Form1();
                 game.Show();
+                SfxSound.controls.play();
+                Destruction();
                 Hide();
             };
             training.Click += (s, e) =>
             {
                 var trainingForm = new TrainingForm();
                 trainingForm.Show();
+                SfxSound.controls.play();
+                TransitionsCount = 1;
                 Hide();
             };
-            eixt.Click += (s, e) => Application.Exit();
+            eixt.Click += (s, e) =>
+            {
+                SfxSound.controls.play();
+                Application.Exit();
+            };
+        }
+
+        private void Destruction()
+        {
+            SoundTimer.Stop();
+            MenuSong.controls.stop();
+            TransitionsCount = 0;
         }
     }
 }
